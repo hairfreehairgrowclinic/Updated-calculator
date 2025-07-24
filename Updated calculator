@@ -1,0 +1,103 @@
+<div style="background:#e6f3ff; padding: 20px; border-radius: 10px; max-width: 800px; margin:auto; box-shadow:0 0 10px rgba(0,0,0,0.1); font-family:Arial;">
+  <h2 style="color:#2a2d4a; text-align:center; font-size:35px;">Hair Transplant Cost Calculator</h2>
+  
+  <div style="display:flex; flex-wrap:wrap; gap:15px; margin-top:20px;">
+    <div style="flex:1 1 45%;">
+      <label>Enter City:</label><br>
+      <input type="text" placeholder="Start typing..." list="cityList" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;">
+      <datalist id="cityList">
+        <option value="Mumbai">
+        <option value="Delhi">
+        <option value="Pune">
+        <option value="Ahmedabad">
+        <option value="Bangalore">
+        <option value="Hyderabad">
+        <option value="Indore">
+        <option value="Chandigarh">
+        <option value="Lucknow">
+        <option value="Nagpur">
+        <option value="Surat">
+        <option value="Bhopal">
+        <option value="Kolkata">
+        <option value="Jaipur">
+      </datalist>
+    </div>
+
+    <div style="flex:1 1 45%;">
+      <label>Select Technique:</label><br>
+      <select style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;" id="technique">
+        <option value="35">Sapphire FUE</option>
+        <option value="30">IMPLANTER FUE</option>
+        <option value="45">BIG-FUE</option>
+        <option value="25">BIO-FUE Technique</option>
+        <option value="70">DHI</option>
+      </select>
+    </div>
+
+    <div style="flex:1 1 100%;">
+      <label>Enter Grafts Required:</label><br>
+      <input type="number" id="grafts" placeholder="e.g. 2000" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;">
+    </div>
+
+    <div style="flex:1 1 100%; text-align:center;">
+      <button onclick="calculateCost()" style="background:#2a2d4a; color:#fff; padding:10px 30px; border:none; border-radius:5px; font-weight:bold;">Calculate</button>
+    </div>
+  </div>
+
+  <div id="result" style="margin-top:30px; display:none;">
+    <h3 style="color:#FFAC1C; text-align:center;">Your Estimated Package: ₹<span id="total"></span></h3>
+    <p><strong>Procedure Time:</strong> 2–4 hours</p>
+    <p><strong>Recovery Period:</strong> 5–7 days</p>
+    <p><strong>Results Timeline:</strong> 4 to 12 months</p>
+
+    <div id="images" style="margin-top:20px;"></div>
+
+    <div style="text-align:center; margin-top:15px;">
+      <a href="https://hairfreehairgrow.com/before-and-after-results/" target="_blank" style="display:inline-block; background:#2a2d4a; color:white; padding:10px 20px; border-radius:5px; text-decoration:none;">See More Results</a>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:30px;">
+    <a href="tel:+917272832222" style="color:#2a2d4a; font-size:18px; font-weight:bold; display:inline-block;">📞 +91 72728 32222</a>
+  </div>
+</div>
+
+<script>
+  function calculateCost() {
+    const grafts = parseInt(document.getElementById("grafts").value);
+    const rate = parseInt(document.getElementById("technique").value);
+    const total = grafts * rate;
+
+    document.getElementById("total").innerText = total.toLocaleString();
+    document.getElementById("result").style.display = "block";
+
+    const imagesDiv = document.getElementById("images");
+    imagesDiv.innerHTML = "";
+
+    let imgs = [];
+
+    if (grafts >= 1000 && grafts <= 1499) {
+      imgs = ["https://hairfreehairgrow.com/wp-content/uploads/2025/03/02.webp"];
+    } else if (grafts >= 1500 && grafts <= 2499) {
+      imgs = ["https://hairfreehairgrow.com/wp-content/uploads/2025/03/01-2.webp", "https://hairfreehairgrow.com/wp-content/uploads/2025/03/02-3.webp"];
+    } else if (grafts >= 2500 && grafts <= 3499) {
+      imgs = ["https://hairfreehairgrow.com/wp-content/uploads/2025/03/02-4.webp", "https://hairfreehairgrow.com/wp-content/uploads/2025/03/02-5.webp"];
+    } else if (grafts >= 3500 && grafts <= 4499) {
+      imgs = ["https://hairfreehairgrow.com/wp-content/uploads/2025/03/02-6.webp", "https://hairfreehairgrow.com/wp-content/uploads/2025/03/01-6.webp"];
+    } else if (grafts >= 4500 && grafts <= 5499) {
+      imgs = ["https://hairfreehairgrow.com/wp-content/uploads/2025/03/01-8.webp", "https://hairfreehairgrow.com/wp-content/uploads/2025/03/02-9.webp"];
+    } else if (grafts >= 6000) {
+      imgs = ["https://hairfreehairgrow.com/wp-content/uploads/2025/03/02-11.webp", "https://hairfreehairgrow.com/wp-content/uploads/2025/03/02-12.webp"];
+    }
+
+    imgs.forEach(url => {
+      const img = document.createElement("img");
+      img.src = url;
+      img.style.width = "100%";
+      img.style.maxWidth = "350px";
+      img.style.margin = "10px auto";
+      img.style.display = "block";
+      imagesDiv.appendChild(img);
+    });
+  }
+</script>
